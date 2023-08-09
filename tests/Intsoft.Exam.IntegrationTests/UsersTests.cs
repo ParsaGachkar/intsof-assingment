@@ -1,3 +1,4 @@
+using Intsof.Exam.Domain.Users;
 using Intsof.Exam.EfCore.DbContext;
 using Intsoft.Exam.API.Controllers;
 using Microsoft.AspNetCore.Builder;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Net.Http.Json;
 
 namespace Intsoft.Exam.IntegrationTests;
@@ -21,8 +23,8 @@ public class UsersTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Create_User()
     {
-        //Arrange
-        var client = _webApplicationFactory.CreateClient();
+        WebApplicationFactory<Program> factory = GetFactory();
+        var client = factory.CreateClient();
         //Act
         var httpResult = await client.PostAsJsonAsync("/api/v1/users",
             new CreateUserDto()
@@ -34,7 +36,7 @@ public class UsersTests : IClassFixture<WebApplicationFactory<Program>>
             });
         //Assert
         Assert.True(httpResult.IsSuccessStatusCode);
-        using (var scope = _webApplicationFactory.Services.CreateScope())
+        using (var scope = factory.Services.CreateScope())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             var user = await dbContext.Users.FirstAsync(q =>
@@ -47,13 +49,39 @@ public class UsersTests : IClassFixture<WebApplicationFactory<Program>>
         }
 
     }
+
+    private WebApplicationFactory<Program> GetFactory()
+    {
+        //Arrange
+        var factory = _webApplicationFactory
+            .WithWebHostBuilder(q =>
+            {
+                q.ConfigureServices(q =>
+                {
+                    var descriptor = q.SingleOrDefault(
+    d => d.ServiceType ==
+        typeof(DbContextOptions<AppDbContext>));
+
+                    if (descriptor != null)
+                    {
+                        q.Remove(descriptor);
+                    }
+
+                    // Add ApplicationDbContext using an in-memory database for testing.
+                    q.AddDbContext<AppDbContext>(q => q.UseInMemoryDatabase("user-db"));
+                });
+            });
+        return factory;
+    }
+
     [Fact]
     public async Task Update_User()
     {
         //Arrange
-        var client = _webApplicationFactory.CreateClient();
+        WebApplicationFactory<Program> factory = GetFactory();
+        var client = factory.CreateClient();
         Guid id = Guid.Empty;
-        using (var scope = _webApplicationFactory.Services.CreateScope())
+        using (var scope = factory.Services.CreateScope())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             id = (await dbContext.Users.FirstAsync()).Id;
@@ -69,7 +97,7 @@ public class UsersTests : IClassFixture<WebApplicationFactory<Program>>
             });
         //Assert
         Assert.True(httpResult.IsSuccessStatusCode);
-        using (var scope = _webApplicationFactory.Services.CreateScope())
+        using (var scope = factory.Services.CreateScope())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             var user = await dbContext.Users.FirstAsync(q =>
@@ -116,7 +144,8 @@ public class UsersTests : IClassFixture<WebApplicationFactory<Program>>
     public async Task Create_User_Validation(string name, string lastname, string phone, string nationalNumber)
     {
         //Arrange
-        var client = _webApplicationFactory.CreateClient();
+        WebApplicationFactory<Program> factory = GetFactory();
+        var client = factory.CreateClient();
         //Act
         var httpResult = await client.PostAsJsonAsync("/api/v1/users",
             new CreateUserDto()
@@ -135,12 +164,15 @@ public class UsersTests : IClassFixture<WebApplicationFactory<Program>>
     public async Task Update_User_Validation(string name, string lastname, string phone, string nationalNumber)
     {
         //Arrange
-        var client = _webApplicationFactory.CreateClient();
-        Guid id = Guid.Empty;
-        using (var scope = _webApplicationFactory.Services.CreateScope())
+        WebApplicationFactory<Program> factory = GetFactory();
+        var client = factory.CreateClient();
+        Guid id = Guid.NewGuid();
+        using (var scope = factory.Services.CreateScope())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            id = (await dbContext.Users.FirstAsync()).Id;
+            var repository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
+            repository.Create(new User(id, "demo", "demo", "2740732708", "09214108118"));
+            await repository.SaveChangesAsync();
         }
         //Act
         var httpResult = await client.PutAsJsonAsync($"/api/v1/users/{id}",
