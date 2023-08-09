@@ -5,23 +5,22 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{69115993-F616-494B-8184-0ED4B3AD6EB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsoft.Exam.API", "src\Intsoft.Exam.API\Intsoft.Exam.API.csproj", "{768179C8-6590-4B3C-AFD9-100F3A252DC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intsoft.Exam.API", "src\Intsoft.Exam.API\Intsoft.Exam.API.csproj", "{768179C8-6590-4B3C-AFD9-100F3A252DC3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9F6007FD-5041-4931-BB06-9E144A03CED8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsoft.Exam.IntegrationTests", "tests\Intsoft.Exam.IntegrationTests\Intsoft.Exam.IntegrationTests.csproj", "{4A2BE357-4B77-4580-9057-D2E4F16F3ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intsoft.Exam.IntegrationTests", "tests\Intsoft.Exam.IntegrationTests\Intsoft.Exam.IntegrationTests.csproj", "{4A2BE357-4B77-4580-9057-D2E4F16F3ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsof.Exam.Domain", "src\Intsof.Exam.Domain\Intsof.Exam.Domain.csproj", "{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intsof.Exam.Domain", "src\Intsof.Exam.Domain\Intsof.Exam.Domain.csproj", "{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsof.Exam.EfCore", "src\Intsof.Exam.EfCore\Intsof.Exam.EfCore.csproj", "{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intsof.Exam.EfCore", "src\Intsof.Exam.EfCore\Intsof.Exam.EfCore.csproj", "{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4D1803F7-8E4A-4079-A03A-44E431B504ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{768179C8-6590-4B3C-AFD9-100F3A252DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -40,6 +39,13 @@ Global
 		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1803F7-8E4A-4079-A03A-44E431B504ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1803F7-8E4A-4079-A03A-44E431B504ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1803F7-8E4A-4079-A03A-44E431B504ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1803F7-8E4A-4079-A03A-44E431B504ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{768179C8-6590-4B3C-AFD9-100F3A252DC3} = {69115993-F616-494B-8184-0ED4B3AD6EB6}
