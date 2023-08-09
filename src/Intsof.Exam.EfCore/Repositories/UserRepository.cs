@@ -1,15 +1,18 @@
 ﻿using Intsof.Exam.Domain.Users;
+using Intsof.Exam.EfCore.DbContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace Intsof.Exam.EfCore.Repositories;
 
 public class UserRepository:IUserRepository
 {
-    public DbSet<User> Users { get; }
+    private DbSet<User> Users { get; }
+    private AppDbContext AppDbContext { get; }
 
-    public UserRepository(DbSet<User> users)
+    public UserRepository(AppDbContext appDbContext)
     {
-        Users = users;
+        Users = appDbContext.Users;
+        AppDbContext = appDbContext;
     }
     public async void Create(User user)
     {
@@ -24,5 +27,9 @@ public class UserRepository:IUserRepository
     public void Update(User user)
     {
         Users.Update(user);
+    }
+    public async Task<int> SaveChangesAsync()
+    {
+        return await AppDbContext.SaveChangesAsync();
     }
 }
