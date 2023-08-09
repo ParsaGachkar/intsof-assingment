@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -26,9 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Intsof.Exam.Domain\Intsof.Exam.Domain.csproj" />
     <ProjectReference Include="..\..\src\Intsoft.Exam.API\Intsoft.Exam.API.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Intsof.Exam.EfCore">
+      <HintPath>..\..\src\Intsof.Exam.EfCore\obj\Debug\net6.0\ref\Intsof.Exam.EfCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

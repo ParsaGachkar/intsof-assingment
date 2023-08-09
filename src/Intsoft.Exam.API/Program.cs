@@ -52,5 +52,9 @@ if (Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true")
 
 app.Run();
 
+public partial class Program
+{
+    
+}
 
 

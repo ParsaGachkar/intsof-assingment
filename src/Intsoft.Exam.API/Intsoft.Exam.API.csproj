@@ -20,9 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intsof.Exam.Domain\Intsof.Exam.Domain.csproj" />
     <ProjectReference Include="..\Intsof.Exam.EfCore\Intsof.Exam.EfCore.csproj" />
   </ItemGroup>
-	<ItemGroup>
-		<InternalsVisibleTo Include="MyTestProject" />
-	</ItemGroup>
+
 </Project>
