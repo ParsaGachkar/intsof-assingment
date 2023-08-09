@@ -18,6 +18,7 @@ public class AppDbContext:Microsoft.EntityFrameworkCore.DbContext
         {
             builder.ToTable("User");
             builder.HasKey(q => q.Id);
+            builder.Property(q => q.LastName).IsRequired();
         });
     }
 }
