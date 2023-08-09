@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9F6007FD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsoft.Exam.IntegrationTests", "tests\Intsoft.Exam.IntegrationTests\Intsoft.Exam.IntegrationTests.csproj", "{4A2BE357-4B77-4580-9057-D2E4F16F3ACF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsof.Exam.Domain", "src\Intsof.Exam.Domain\Intsof.Exam.Domain.csproj", "{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intsof.Exam.EfCore", "src\Intsof.Exam.EfCore\Intsof.Exam.EfCore.csproj", "{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +32,19 @@ Global
 		{4A2BE357-4B77-4580-9057-D2E4F16F3ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A2BE357-4B77-4580-9057-D2E4F16F3ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A2BE357-4B77-4580-9057-D2E4F16F3ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{768179C8-6590-4B3C-AFD9-100F3A252DC3} = {69115993-F616-494B-8184-0ED4B3AD6EB6}
 		{4A2BE357-4B77-4580-9057-D2E4F16F3ACF} = {9F6007FD-5041-4931-BB06-9E144A03CED8}
+		{1FBB9708-A7DB-4CA2-8859-7758CDF9BEDE} = {69115993-F616-494B-8184-0ED4B3AD6EB6}
+		{AD0A5918-DE13-47BB-8CFD-4E6530EB65AE} = {69115993-F616-494B-8184-0ED4B3AD6EB6}
 	EndGlobalSection
 EndGlobal
