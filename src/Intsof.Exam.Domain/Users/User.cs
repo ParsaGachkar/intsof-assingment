@@ -4,7 +4,7 @@ namespace Intsof.Exam.Domain.Users;
 
 public class User
 {
-    public User(Guid id,string firstName, string lastName, string nationalCode, string phoneNumber)
+    public User(Guid id,string? firstName, string lastName, string nationalCode, string phoneNumber)
     {
         if (id == default)
         {
@@ -21,12 +21,14 @@ public class User
         PhoneNumber = phoneNumber;
         if (!NationalCode.IsValidIranianNationalCode())
         {
-            NationalCode = nationalCode;    
+            throw new ArgumentException("NationalCode is Not Valid",paramName: nameof(nationalCode));
         }
-        if (!PhoneNumber.IsValidIranianPhoneNumber())
+        NationalCode = nationalCode;
+        if (!PhoneNumber.IsValidIranianMobileNumber())
         {
-            PhoneNumber = phoneNumber;   
+            throw new ArgumentException("PhoneNumber is Not Valid",paramName: nameof(phoneNumber));
         }
+        PhoneNumber = phoneNumber;
         
     }
     // todo fix this warning
@@ -36,7 +38,7 @@ public class User
     }
     public Guid Id { get; }
 
-    public string FirstName { get; set; }
+    public string? FirstName { get; set; }
     public string LastName { get; set; }
     public string NationalCode { get; set; }
     public string PhoneNumber { get; set; }
