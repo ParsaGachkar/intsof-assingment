@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  intsoft.exam.api:
+    image: ${DOCKER_REGISTRY-}intsoftexamapi
+    environment:
+      - ConnectionStrings__Default=Server=postgres;Port=5432;Database=users-db;User Id=postgres;Password=1234Abcd%;
+    build:
+      context: .
+      dockerfile: src/Intsoft.Exam.API/Dockerfile
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1234Abcd%
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./migrate.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db-data:
